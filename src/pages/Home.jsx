@@ -1,7 +1,11 @@
+import s from "./Page.module.scss";
+
 export const Home = () => {
   return (
     <>
-      <h2>Home</h2>
+      <main className={s.Page}>
+        <h2>Home</h2>
+      </main>
     </>
   );
 };
