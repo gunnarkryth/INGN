@@ -1,5 +1,6 @@
 import * as contentful from "contentful";
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import s from "./Style.module.scss";
 
 export const Posts = () => {
@@ -25,6 +26,7 @@ export const Posts = () => {
               {item.fields.postedAt} - af {item.fields.author.fields.name}
             </h4>
           </hgroup>
+          {/* <NavLink to={`/post/${item.fields.slug}`}>Læs mere</NavLink> */}
           <div
             className={s.img_container}
             style={{
