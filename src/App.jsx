@@ -2,7 +2,7 @@
 import "./assets/styles/App.scss";
 import { Home } from "./pages/Home";
 import { Header } from "./components/Header/Header";
-
+import { Posts } from "./components/Posts/Posts";
 function App() {
   // <BrowserRouter>
   //   <Routes>
@@ -12,6 +12,7 @@ function App() {
   return (
     <>
       <Header></Header>
+      <Posts></Posts>
     </>
   );
 }
