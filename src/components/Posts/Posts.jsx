@@ -26,7 +26,7 @@ export const Posts = () => {
               {item.fields.postedAt} - af {item.fields.author.fields.name}
             </h4>
           </hgroup>
-          {/* <NavLink to={`/post/${item.fields.slug}`}>Læs mere</NavLink> */}
+          <NavLink to={`/post/${item.fields.slug}`}>Læs mere</NavLink>
           <div
             className={s.img_container}
             style={{
