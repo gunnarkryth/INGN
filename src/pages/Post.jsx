@@ -1,8 +1,8 @@
 import * as contentful from "contentful";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Markdown from "markdown-to-jsx";
 import s from "./Page.module.scss";
-import {Markdown} fr
 
 export const Post = () => {
   const [post, setPost] = useState();
@@ -21,7 +21,23 @@ export const Post = () => {
       .then((res) => setPost(res));
   }, []);
   console.log(post);
-  return <>
-  
-  {item.fields.content}</>;
+  return (
+    <>
+      {post?.fields ? (
+        <article>
+          <div
+            className={s.hero}
+            style={{
+              backgroundImage: `url(${post.fields.image.fields.file.url})`,
+            }}
+          ></div>
+          <hgroup>
+            <h2>{post?.fields?.title}</h2>
+            <h4>{post?.fields?.postedAt} - af {post?.fields?.author?.fields?.name}</h4>
+          </hgroup>
+          <Markdown>{post?.fields?.content}</Markdown>
+        </article>
+      ) : null}
+    </>
+  );
 };

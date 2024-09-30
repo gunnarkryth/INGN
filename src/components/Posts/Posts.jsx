@@ -14,7 +14,7 @@ export const Posts = () => {
   useEffect(() => {
     client.getEntries({ content_type: "post" }).then((res) => setPost(res));
   }, []);
-  console.log(post);
+   console.log(post);
 
   return (
     <section className={s.Posts}>
