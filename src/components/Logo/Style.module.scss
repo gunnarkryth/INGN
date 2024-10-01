@@ -1,10 +1,14 @@
 .Logo {
-  font-size: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 60px;
-  color: #c52525;
-  text-align: center;
+ 
+  a {
+    text-decoration: none;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 60px;
+    color: #c52525;
+    text-align: center;
+  }
 }

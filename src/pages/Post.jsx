@@ -47,7 +47,7 @@ export const Post = () => {
   return (
     <>
       {post?.fields ? (
-        <article>
+        <article className={s.Page}>
           <div
             className={s.hero}
             style={{
