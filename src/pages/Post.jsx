@@ -15,12 +15,35 @@ export const Post = () => {
     accessToken: import.meta.env.VITE_PUBLIC_ACCESS_TOKEN,
   });
 
+  // useEffect(() => {
+  //   client
+  //     .getEntry({ content_type: "post", slug: slug })
+  //     .then((res) => setPost(res));
+  // }, []);
+
   useEffect(() => {
-    client
-      .getEntry({ content_type: "post", slug: slug })
-      .then((res) => setPost(res));
-  }, []);
+    const fetchPost = async () => {
+      try {
+        const res = await client.getEntries({
+          content_type: "post",
+          "fields.slug": slug,
+        });
+
+        if (res.items.length > 0) {
+          const entry = res.items[0];
+          setPost(entry);
+        } else {
+          console.log("404");
+        }
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    };
+    fetchPost();
+  });
+
   console.log(post);
+
   return (
     <>
       {post?.fields ? (
@@ -33,7 +56,9 @@ export const Post = () => {
           ></div>
           <hgroup>
             <h2>{post?.fields?.title}</h2>
-            <h4>{post?.fields?.postedAt} - af {post?.fields?.author?.fields?.name}</h4>
+            <h4>
+              {post?.fields?.postedAt} - af {post?.fields?.author?.fields?.name}
+            </h4>
           </hgroup>
           <Markdown>{post?.fields?.content}</Markdown>
         </article>
