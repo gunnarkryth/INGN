@@ -1,5 +1,5 @@
 .Posts {
-    margin-bottom: 10rem;
+  margin-bottom: 10rem;
   nav {
     margin: 3rem;
     margin-top: -4.5rem;
@@ -60,6 +60,21 @@
       hgroup {
         background-color: white;
       }
+      .img_container {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 300px;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    nav {
+        display: none;
+      }
+    .PostsGrid {
+      display: block;
       .img_container {
         background-position: center;
         background-size: cover;

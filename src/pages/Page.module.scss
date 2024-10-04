@@ -24,4 +24,12 @@
   .Content {
     margin: 0 10% 10rem;
   }
+  @media (max-width: 900px) {
+    nav {
+      display: none;
+    }
+    footer {
+        display: none;
+    }
+  }
 }

@@ -1,6 +1,8 @@
+import s from "./Style.module.scss";
+
 export const Footer = () => {
   return (
-    <footer>
+    <footer className={s.Footer}>
       <section>
         <h5>Adresse:</h5>
         <p>Intent nyt - Godt nyt ApS</p>
