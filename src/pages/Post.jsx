@@ -60,7 +60,7 @@ export const Post = () => {
               {post?.fields?.postedAt} - af {post?.fields?.author?.fields?.name}
             </h4>
           </hgroup>
-          <Markdown>{post?.fields?.content}</Markdown>
+          <Markdown className={s.Content}>{post?.fields?.content}</Markdown>
         </article>
       ) : null}
     </>
