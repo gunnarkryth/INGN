@@ -17,8 +17,8 @@
   .PostsGrid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    // grid-template-rows: repeat(7, 1fr);
-    grid-auto-rows: min-content;
+    grid-template-rows: repeat(7, 1fr);
+    // grid-auto-rows: min-content;
     gap: 1rem;
 
     > *:nth-child(1) {
@@ -71,8 +71,8 @@
   }
   @media (max-width: 900px) {
     nav {
-        display: none;
-      }
+      display: none;
+    }
     .PostsGrid {
       display: block;
       .img_container {
