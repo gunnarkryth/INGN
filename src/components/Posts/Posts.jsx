@@ -33,10 +33,13 @@ export const Posts = () => {
       ? posts
       : posts.filter((post) => post.fields.category === category);
 
-  // Split posts into chunks of 9
+  // Split posts into chunks of 9, filtering out empty arrays
   const postsChunks = [];
   for (let i = 0; i < filteredPosts.length; i += 9) {
-    postsChunks.push(filteredPosts.slice(i, i + 9));
+    const chunk = filteredPosts.slice(i, i + 9);
+    if (chunk.length > 0) {
+      postsChunks.push(chunk); // Only push non-empty chunks
+    }
   }
 
   return (
@@ -63,30 +66,31 @@ export const Posts = () => {
         </ul>
       </nav>
 
-      {/* Render posts in chunks of 9 */}
-      {postsChunks.map((chunk, chunkIndex) => (
-        <div key={chunkIndex} className={s.PostsGrid}>
-          {chunk.map((item) => (
-            <figure key={item.sys.id} className={s.Post}>
-              <hgroup>
-                <h3>{item.fields.title}</h3>
-                <h4>
-                  {item.fields.postedAt} - af {item.fields.author.fields.name}
-                </h4>
-                <NavLink className={s.Link} to={`/post/${item.fields.slug}`}>
-                  Læs mere
-                </NavLink>
-              </hgroup>
-              <div
-                className={s.img_container}
-                style={{
-                  backgroundImage: `url(${item.fields.image.fields.file.url})`,
-                }}
-              ></div>
-            </figure>
-          ))}
-        </div>
-      ))}
+      {/* Render only non-empty postsChunks */}
+      {postsChunks.length > 0 &&
+        postsChunks.map((chunk, chunkIndex) => (
+          <div key={chunkIndex} className={s.PostsGrid}>
+            {chunk.map((item) => (
+              <figure key={item.sys.id} className={s.Post}>
+                <hgroup>
+                  <h3>{item.fields.title}</h3>
+                  <h4>
+                    {item.fields.postedAt} - af {item.fields.author.fields.name}
+                  </h4>
+                  <NavLink className={s.Link} to={`/post/${item.fields.slug}`}>
+                    Læs mere
+                  </NavLink>
+                </hgroup>
+                <div
+                  className={s.img_container}
+                  style={{
+                    backgroundImage: `url(${item.fields.image.fields.file.url})`,
+                  }}
+                ></div>
+              </figure>
+            ))}
+          </div>
+        ))}
     </section>
   );
 };
